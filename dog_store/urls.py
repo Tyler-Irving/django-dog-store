@@ -19,7 +19,7 @@ import app.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", app.views.home, name="home"),
+    path("", app.views.ProductsView.as_view(), name="home"),
     path(
         "dog-product/<dog_product_id>",
         app.views.dog_product_detail,
