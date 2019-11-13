@@ -37,8 +37,22 @@ def purchase_detail(request, purchase_id):
 
 
 def new_dog_tag(request):
-    pass
+    if request.method == "GET":
+        return render(request, "new_dog_tag.html")
+    elif request.method == "POST":
+        form = NewDogTagForm(request.POST)
+        if form.is_valid():
+            owner_name = form.cleaned_data["owner_name"]
+            dog_name = form.cleaned_data["dog_name"]
+            dog_birthday = form.cleaned_data["dog_birthday"]
+            DogTag.objects.create(
+                owner_name=owner_name, dog_name=dog_name, dog_birthday=dog_birthday
+            )
+            return redirect("dog_tag_list")
+        else:
+            return render('new_dog_tag.html', {'form': form})
 
 
 def dog_tag_list(request):
-    pass
+    dog_tags = DogTag.objects.all()
+    return render(request, "dog_tag_list.html", {"dog_tags": dog_tags})
