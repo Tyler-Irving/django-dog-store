@@ -2,10 +2,19 @@ from django.db import models
 
 # Create your models here.
 class DogProduct(models.Model):
-    pass
+    name = models.TextField()
+    product_type = models.TextField()
+    dog_size = models.TextField()
+    price = models.FloatField()
+    quantity = models.IntegerField()
+
 
 class Purchase(models.Model):
-    pass
+    dog_product = models.ForeignKey(DogProduct, on_delete=models.PROTECT)
+    purchased_at = models.DateTimeField()
+
 
 class DogTag(models.Model):
-    pass
+    owner_name = models.TextField()
+    dog_name = models.TextField()
+    dog_birthday = models.DateField()
