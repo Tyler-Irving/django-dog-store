@@ -1,11 +1,20 @@
 from django.shortcuts import render, redirect
+from django.views import generic
 from django.utils import timezone
 from django.contrib import messages
 from app.models import DogProduct, Purchase, DogTag
 from app.forms import NewDogTagForm
 
 # Create your views here.
+class ProductsView(generic.ListView):
+    # Class based view for the home.html page that displays all of the products on the webpage
+    model = DogProduct
+    context_object_name = "dog_products"
+    template_name = "home.html"
+
+
 def home(request):
+    # Function based view for the home.html page that displays all of the products on the webpage
     dog_products = DogProduct.objects.all()
     return render(request, "home.html", {"dog_products": dog_products})
 
@@ -50,7 +59,7 @@ def new_dog_tag(request):
             )
             return redirect("dog_tag_list")
         else:
-            return render('new_dog_tag.html', {'form': form})
+            return render("new_dog_tag.html", {"form": form})
 
 
 def dog_tag_list(request):
