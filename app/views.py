@@ -5,7 +5,8 @@ from app.forms import NewDogTagForm
 
 # Create your views here.
 def home(request):
-    pass
+    dog_products = DogProduct.objects.all()
+    return render(request, "home.html", {"dog_products": dog_products})
 
 
 def dog_product_detail(request):
