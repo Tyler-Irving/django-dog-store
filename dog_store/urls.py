@@ -27,7 +27,7 @@ urlpatterns = [
     ),
     path(
         "dog-product/<dog_product_id>/purchase",
-        app.views.purchase_dog_product,
+        app.views.PurchaseDogProductView.as_view(),
         name="purchase_dog_product",
     ),
     path(
