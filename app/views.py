@@ -8,6 +8,7 @@ from app.forms import NewDogTagForm
 # Create your views here.
 class ProductsView(generic.ListView):
     # Class based view for the home.html page that displays all of the products on the webpage
+    # USED FOR THE PROJECT IN ITS CURRENT STATE | NOT REQUIRED TO FINISH THE PROJECT(EXTRA)
     model = DogProduct
     context_object_name = "dog_products"
     template_name = "home.html"
@@ -15,6 +16,7 @@ class ProductsView(generic.ListView):
 
 def home(request):
     # Function based view for the home.html page that displays all of the products on the webpage
+    # NOT USED FOR THE PROJECTS IN ITS CURRENT STATE | REQUIRED TO FINISH THE PROJECT
     dog_products = DogProduct.objects.all()
     return render(request, "home.html", {"dog_products": dog_products})
 
