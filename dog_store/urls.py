@@ -22,7 +22,7 @@ urlpatterns = [
     path("", app.views.ProductsView.as_view(), name="home"),
     path(
         "dog-product/<dog_product_id>",
-        app.views.dog_product_detail,
+        app.views.DogProductDetailView.as_view(),
         name="dog_product_detail",
     ),
     path(
