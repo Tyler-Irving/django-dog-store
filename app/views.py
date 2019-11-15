@@ -4,7 +4,6 @@ from django.utils import timezone
 from django.contrib import messages
 from django.urls import reverse_lazy
 from app.models import DogProduct, Purchase, DogTag
-from app.forms import NewDogTagForm
 
 # Create your views here.
 class ProductsListView(generic.ListView):
