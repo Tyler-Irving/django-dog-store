@@ -30,7 +30,11 @@ urlpatterns = [
         app.views.purchase_dog_product,
         name="purchase_dog_product",
     ),
-    path("purchase/<purchase_id>", app.views.purchase_detail, name="purchase_detail"),
+    path(
+        "purchase/<purchase_id>",
+        app.views.PurchaseDetailView.as_view(),
+        name="purchase_detail",
+    ),
     path("dogtag/new", app.views.new_dog_tag, name="new_dog_tag"),
     path("dogtag", app.views.dog_tag_list, name="dog_tag_list"),
 ]

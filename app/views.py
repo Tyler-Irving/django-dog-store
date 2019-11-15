@@ -36,11 +36,11 @@ def purchase_dog_product(request, dog_product_id):
         messages.error(request, f"{dog_product.name} is out of stock")
         return redirect("dog_product_detail", dog_product_id)
 
-
-def purchase_detail(request, purchase_id):
-    purchase = Purchase.objects.get(id=purchase_id)
-    return render(request, "purchase_detail.html", {"purchase": purchase})
-
+class PurchaseDetailView(generic.DetailView):
+    model = Purchase
+    context_object_name = "purchase"
+    template_name = "purchase_detail.html"
+    pk_url_kwarg = "purchase_id"
 
 def new_dog_tag(request):
     if request.method == "GET":
