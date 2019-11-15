@@ -19,7 +19,7 @@ import app.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", app.views.ProductsView.as_view(), name="home"),
+    path("", app.views.ProductsListView.as_view(), name="home"),
     path(
         "dog-product/<dog_product_id>",
         app.views.DogProductDetailView.as_view(),
@@ -36,5 +36,5 @@ urlpatterns = [
         name="purchase_detail",
     ),
     path("dogtag/new", app.views.new_dog_tag, name="new_dog_tag"),
-    path("dogtag", app.views.dog_tag_list, name="dog_tag_list"),
+    path("dogtag", app.views.DogTagList.as_view(), name="dog_tag_list"),
 ]

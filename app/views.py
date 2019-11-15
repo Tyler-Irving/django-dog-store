@@ -6,16 +6,12 @@ from app.models import DogProduct, Purchase, DogTag
 from app.forms import NewDogTagForm
 
 # Create your views here.
-class ProductsView(generic.ListView):
-    # Class based list view for the home.html page that displays all of the products on the webpage
-    # USED FOR THE PROJECT IN ITS CURRENT STATE | NOT REQUIRED TO FINISH THE PROJECT(EXTRA)
+class ProductsListView(generic.ListView):
     model = DogProduct
     context_object_name = "dog_products"
     template_name = "home.html"
 
 class DogProductDetailView(generic.DetailView):
-    # class based detail view for the dog_product_detail.html page that displays the details about the desired product
-    # USED FOR THE PROJECT IN ITS CURRENT STATE | NOT REQUIRED TO FINISH THE PROJECT(EXTRA)
     model = DogProduct
     context_object_name = "dog_product"
     template_name = "dog_product_detail.html"
@@ -58,7 +54,7 @@ def new_dog_tag(request):
         else:
             return render("new_dog_tag.html", {"form": form})
 
-
-def dog_tag_list(request):
-    dog_tags = DogTag.objects.all()
-    return render(request, "dog_tag_list.html", {"dog_tags": dog_tags})
+class DogTagListView(generic.ListView):
+    model = DogTag
+    context_object_name = "dog_tags"
+    template_name = "dog_tag_list.html"
