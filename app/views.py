@@ -13,14 +13,6 @@ class ProductsView(generic.ListView):
     context_object_name = "dog_products"
     template_name = "home.html"
 
-
-def home(request):
-    # Function based view for the home.html page that displays all of the products on the webpage
-    # NOT USED FOR THE PROJECTS IN ITS CURRENT STATE | REQUIRED TO FINISH THE PROJECT
-    dog_products = DogProduct.objects.all()
-    return render(request, "home.html", {"dog_products": dog_products})
-
-
 class DogProductDetailView(generic.DetailView):
     # class based detail view for the dog_product_detail.html page that displays the details about the desired product
     # USED FOR THE PROJECT IN ITS CURRENT STATE | NOT REQUIRED TO FINISH THE PROJECT(EXTRA)
@@ -28,14 +20,6 @@ class DogProductDetailView(generic.DetailView):
     context_object_name = "dog_product"
     template_name = "dog_product_detail.html"
     pk_url_kwarg = "dog_product_id"
-
-
-def dog_product_detail(request, dog_product_id):
-    # function based detail view for the dog_product_detail.html page that displays the details about the desired product
-    # NOT USED FOR THE PROJECTS IN ITS CURRENT STATE | REQUIRED TO FINISH THE PROJECT
-    dog_product = DogProduct.objects.get(id=dog_product_id)
-    return render(request, "dog_product_detail.html", {"dog_product": dog_product})
-
 
 def purchase_dog_product(request, dog_product_id):
     dog_product = DogProduct.objects.get(id=dog_product_id)
