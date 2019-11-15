@@ -35,6 +35,6 @@ urlpatterns = [
         app.views.PurchaseDetailView.as_view(),
         name="purchase_detail",
     ),
-    path("dogtag/new", app.views.new_dog_tag, name="new_dog_tag"),
+    path("dogtag/new", app.views.NewDogTagCreateView.as_view(), name="new_dog_tag"),
     path("dogtag", app.views.DogTagListView.as_view(), name="dog_tag_list"),
 ]
